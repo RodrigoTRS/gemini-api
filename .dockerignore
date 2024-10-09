@@ -1,0 +1,25 @@
+# Node modules
+node_modules
+
+# Local mongho files
+db
+
+# Local build files
+dist
+
+# Scripts
+scripts
+
+# Docker files
+Dockerfile
+
+# .zip
+*.zip
+
+# Config files
+.dockerignore
+.gitignore
+.env*
+docker-compose.yml
+eslint.config.js
+vite.config.ts
