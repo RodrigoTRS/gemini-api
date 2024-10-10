@@ -1,6 +1,6 @@
-import { InMemoryChatRepository } from "@/repositories/in-memory/in-memory-chat-repository";
-import { makeChat } from "@/entities/factories/make-chat";
-import { UniqueEntityId } from "@/core/unique-entity-id";
+import { InMemoryChatRepository } from "../repositories/in-memory/in-memory-chat-repository";
+import { makeChat } from "../entities/factories/make-chat";
+import { UniqueEntityId } from "../core/unique-entity-id";
 import { GetChatByIdUseCase } from "./get-chat-by-id-use-case";
 
 let chatRepository: InMemoryChatRepository; 

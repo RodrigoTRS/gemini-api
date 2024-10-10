@@ -13,10 +13,7 @@ export class MongoChatRepository implements ChatRepository {
     }
 
     async connect() {
-        const connString = env.NODE_ENV === "development"
-            ? env.LOCAL_MONGO_DB_CONNECTION
-            : env.PROD_MONGO_DB_CONNECTION;
-        await mongoose.connect(connString);
+        await mongoose.connect(env.MONGO_DB_CONNECTION);
     }
 
     async create(chat: Chat) {

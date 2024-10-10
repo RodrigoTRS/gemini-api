@@ -4,11 +4,10 @@ import { z } from "zod";
 config();
 
 const envSchema = z.object({
-    NODE_ENV: z.enum(["production", "development"]).default("development"),
+    NODE_ENV: z.enum(["production", "development", "test"]).default("development"),
     PORT: z.string().default("3333").transform((el) => parseInt(el)),
     GEMINI_KEY: z.string(),
-    LOCAL_MONGO_DB_CONNECTION: z.string(),
-    PROD_MONGO_DB_CONNECTION: z.string(),
+    MONGO_DB_CONNECTION: z.string(),
     AWS_ACCESS_KEY: z.string(),
     AWS_SECRET_ACCESS_KEY: z.string(),
     AWS_REGION: z.string().default("us-east-1")

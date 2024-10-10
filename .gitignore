@@ -1,6 +1,8 @@
 # Keep environment variables out of version control
 .env
 
+# Zip file
+*.zip
 
 #Local db files
 db

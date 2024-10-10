@@ -1,4 +1,4 @@
-import { InMemoryChatRepository } from "@/repositories/in-memory/in-memory-chat-repository";
+import { InMemoryChatRepository } from "../repositories/in-memory/in-memory-chat-repository";
 import { CreateChatUseCase } from "./create-chat-use-case";
 
 let chatRepository: InMemoryChatRepository; 

@@ -1,6 +1,6 @@
-import { InMemoryChatRepository } from "@/repositories/in-memory/in-memory-chat-repository";
+import { InMemoryChatRepository } from "../repositories/in-memory/in-memory-chat-repository";
 import { SendMessageUseCase } from "./send-message-use-case";
-import { makeChat } from "@/entities/factories/make-chat";
+import { makeChat } from "../entities/factories/make-chat";
 
 let chatRepository: InMemoryChatRepository; 
 let sut: SendMessageUseCase;

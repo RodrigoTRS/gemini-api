@@ -1,0 +1,35 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_REGION: "us-east-1"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo "Running npm install"
+      - npm install
+  pre_build:
+    commands:
+      - echo "Running tests"
+      - npm run test
+
+      - echo "Loggin in into ECR"
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 851725325896.dkr.ecr.$AWS_REGION.amazonaws.com
+  build:
+    commands:
+      - echo "Building the docker image"
+      - docker build -t gemini-app .
+      - docker tag gemini-app:latest 851725325896.dkr.ecr.us-east-1.amazonaws.com/gemini-app:latest
+  post_build:
+    commands:
+      - docker push 851725325896.dkr.ecr.us-east-1.amazonaws.com/gemini-app:latest
+      - printf '[{"name":"gemini-server-container","imageUri":"851725325896.dkr.ecr.us-east-1.amazonaws.com/gemini-app:latest"}]' > imagedefinitions.json
+
+artifacts:
+
+  files:
+      - imagedefinitions.json
+
