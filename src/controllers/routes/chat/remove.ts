@@ -1,5 +1,5 @@
 import { Request, RequestHandler, Response } from "express";
-import { makeRemoveChatByIdUseCase } from "../../use-cases/factories/make-remove-chat-by-id-use-case";
+import { makeRemoveChatByIdUseCase } from "@/use-cases/factories/make-remove-chat-by-id-use-case";
 import { z } from "zod";
 
 export const removeParamSchema = z.object({

@@ -1,5 +1,5 @@
 import { Request, RequestHandler, Response } from "express";
-import { makeCreateChatUseCase } from "../../use-cases/factories/make-create-chat-use-case";
+import { makeCreateChatUseCase } from "@/use-cases/factories/make-create-chat-use-case";
 import { z } from "zod";
 
 const createChatBodySchema = z.object({

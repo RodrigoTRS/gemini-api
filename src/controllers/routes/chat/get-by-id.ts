@@ -1,6 +1,6 @@
 import { Request, RequestHandler, Response } from "express";
 import { z } from "zod";
-import { makeGetChatByIdUseCase } from "../../use-cases/factories/make-get-chat-by-id-use-case";
+import { makeGetChatByIdUseCase } from "@/use-cases/factories/make-get-chat-by-id-use-case";
 
 export const getByIdParamSchema = z.object({
     id: z.string().uuid()

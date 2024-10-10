@@ -1,18 +1,18 @@
 import { Request, RequestHandler, Response } from "express";
 import { z } from "zod";
-import { makeSendMessageUseCase } from "../../use-cases/factories/make-send-message-use-case";
+import { makeRenameChatByIdUseCase } from "@/use-cases/factories/make-rename-chat-by-id-use-case";
 
-export const sendMessageParamSchema = z.object({
+export const renameParamSchema = z.object({
     id: z.string().uuid()
 });
 
-const sendMessageBodySchema = z.object({
-    prompt: z.string()
+const renameBodySchema = z.object({
+    name: z.string()
 });
 
-export const sendMessage: RequestHandler = async (req: Request, res: Response) => {
+export const rename: RequestHandler = async (req: Request, res: Response) => {
 
-    const params = sendMessageParamSchema.safeParse(req.params);
+    const params = renameParamSchema.safeParse(req.params);
 
     if (!params.success) {
         console.log(params.error);
@@ -20,7 +20,7 @@ export const sendMessage: RequestHandler = async (req: Request, res: Response) =
         return;
     }
 
-    const body = sendMessageBodySchema.safeParse(req.body);
+    const body = renameBodySchema.safeParse(req.body);
 
     if (!body.success) {
         console.log(body.error);
@@ -29,10 +29,10 @@ export const sendMessage: RequestHandler = async (req: Request, res: Response) =
     }
 
     const { id } = params.data;
-    const { prompt } = body.data;
+    const { name } = body.data;
 
-    const useCase = makeSendMessageUseCase();
-    const response  = await useCase.execute({ id, prompt });
+    const useCase = makeRenameChatByIdUseCase();
+    const response  = await useCase.execute({ id, name });
 
     if (response.isFailure()) {
         res.status(response.value.statusCode).send(response.value.message);
